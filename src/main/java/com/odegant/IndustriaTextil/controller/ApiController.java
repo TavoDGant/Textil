@@ -3,6 +3,7 @@ package com.odegant.IndustriaTextil.controller;
 import com.odegant.IndustriaTextil.entity.Cortes;
 import com.odegant.IndustriaTextil.entity.Empleado;
 import com.odegant.IndustriaTextil.service.AdminService;
+import com.odegant.IndustriaTextil.serviceImpl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
