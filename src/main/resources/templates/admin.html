@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
 <body>
 
+    <!--Sidebar-->
     <nav class="main-menu">
         <ul>
             <li>
@@ -116,7 +118,9 @@
             </li>
         </ul>
     </nav>
+    <!--Fin de Sidebar-->
 
+    <!--Dashboard-->
     <div class="menu">
 
         <h1>Dashboard</h1>
@@ -148,44 +152,56 @@
 
         <br>
         <br>
+        <h1>Empleados</h1>
+        <div>
+            <div class="input-icons">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" id="buscarTabla" onkeyup="buscarTabla()" placeholder="Buscar empleado..">
+            </div>
+
+
+            <table id="miTabla">
+                <thead class="header">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Cortes Totales Realizados</th>
+                        <th>Sueldo Total Pagado</th>
+                        <th>Mas Detalles</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+        </div>
+        <br>
+        <br>
 
         <div>
             <h1>Cortes Quincenales</h1>
             <canvas id="myChart"></canvas>
         </div>
-
-
-        <br>
-        <br>
-        <div style="overflow-x:auto;">
-            <div class="input-icons">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input type="text" id="buscarTabla" onkeyup="buscarTabla()" placeholder="Buscar empleado..">
-            </div>
-            
-            
-            <table id="miTabla">
-              <thead class="header"> 
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Cortes Totales Realizados</th>
-                    <th>Sueldo Total Pagado</th>
-                    <th>Mas Detalles</th>
-                  </tr>
-              </thead>
-              <tbody></tbody>
-              
-            </table>
-          </div>
     </div>
+    <!--Fin del Dashboard-->
 
-
+    <!--Ventana Modal-->
+    <div id="detalles" class="modal">
+        <div class="modal__content">
+            <h1>CSS Only Modal</h1>
+    
+            <p>
+                You can use the :target pseudo-class to create a modals with Zero JavaScript. Enjoy!
+            </p>
+    
+            <a href="#" class="modal__close">&times;</a>
+        </div>
+    </div>
+    <!--Fin Ventana Modal-->
 
     <script th:inline="javascript">
         var empleado = [[${ empleados }]];
     </script>
-    
+
     <script th:src="@{/js/admin.js}"></script>
 
 </body>

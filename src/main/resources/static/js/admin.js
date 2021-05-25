@@ -23,23 +23,16 @@ function listaEmpleados(data) {
             <td>${edad}</td>
             <td>${totalCortes}</td>
             <td>$ ${sueldoTotal}</td>
-            <td> <a href="#"> <i class="fa fa-info-circle fa-2x info" aria-hidden="true"></i></a> </td>
+            <td> <a href="#detalles" onclick="cortesDetalles('${cortes}')"> <i class="fa fa-info-circle fa-2x info" aria-hidden="true"></i></a> </td>
         `;
         tabla.appendChild(row);
     }
 }
 listaEmpleados(empleados);
 
-/*function cortesMesAnterior(data){
-    for (let i = 0; i < data.length; i++){
-        for (let j = 0; j < cortes.length; j++) {
-             
-        }
-    }
+function cortesDetalles(cortes){
+    console.log(cortes);
 }
-cortesMesAnterior(empleados);
-*/
-
 
 function buscarTabla() {
     // Declare variables
