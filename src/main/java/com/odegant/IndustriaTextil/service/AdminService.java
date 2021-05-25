@@ -20,6 +20,8 @@ public interface AdminService {
 
     ResponseEntity<HttpStatus> actualizarEmpleado(Empleado empleado);
 
+    List<Integer> totalMesCards();
+
     //-----------------CORTES---------------------------------------------
     ResponseEntity<HttpStatus> guardarCorte(Cortes cortes);
 

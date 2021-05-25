@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,6 +74,26 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+    public List<Integer> totalMesCards() {
+        List<Cortes> cortesList = corteDAO.findAll();
+        ArrayList<Integer> cortesTarjetas = new ArrayList<Integer>();
+        int sumaMesActual = cortesList.stream()
+                .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
+                        && cortes.getFecha_corte().get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH))
+                .mapToInt(Cortes::getCortes).sum();
+        int sumaMesAnterior = cortesList.stream()
+                .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
+                        && cortes.getFecha_corte().get(Calendar.MONTH) == Calendar.getInstance().get((Calendar.MONTH))-1)
+                .mapToInt(Cortes::getCortes).sum();
+        int sumaDelAnio = cortesList.stream()
+                .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR))
+                .mapToInt(Cortes::getCortes).sum();
+        cortesTarjetas.add(sumaMesAnterior);
+        cortesTarjetas.add(sumaMesActual);
+        cortesTarjetas.add(sumaDelAnio);
+        return cortesTarjetas;
+    }
+
     //-----------------CORTES---------------------------------------------
     public ResponseEntity<HttpStatus> guardarCorte(Cortes cortes){
         try {
@@ -96,7 +118,6 @@ public class AdminServiceImpl implements AdminService {
             c.setFkec(cortes.getFkec());
             corteDAO.save(c);
             return ResponseEntity.ok().build();
-
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }

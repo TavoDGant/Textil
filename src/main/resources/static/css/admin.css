@@ -13,7 +13,6 @@ vertical-align: middle;
 font-size:20px;
 }
 
-
 .main-menu:hover,nav.main-menu.expanded {
 width:250px;
 overflow:visible;
@@ -22,7 +21,7 @@ overflow:visible;
 .main-menu {
 background:#212121;
 border-right:1px solid #e5e5e5;
-position:absolute;
+position:fixed;
 top:0;
 bottom:0;
 height:100%;
@@ -130,6 +129,7 @@ background-color:#5fa2db;
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(247, 247, 247);
 }
 
 .menu{
@@ -164,8 +164,77 @@ body {
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5);
   padding: 16px;
   text-align: center;
+  color: white;
+}
+
+.card-1{
+  background-color: rgb(220, 90, 90);
+}
+.card-2{
+  background-color: rgb(32, 160, 150);
+}
+.card-3{
+  background-color: rgb(130, 170, 210);
+}
+.card-1:hover{
+  background-color: rgb(200, 90, 90);
+}
+.card-2:hover{
+  background-color:rgb(12, 150, 140);
+}
+.card-3:hover{
+  background-color: rgb(130, 160, 200);
+}
+
+#myChart{
+  max-width: 650px;
+  margin: auto;
+}
+
+.input-icons {
+  position: relative;
+}
+.input-icons i {
+  position: absolute;
+  left: -9px;
+  top: 13px;
+  color: gray;
+}
+
+table {
+  padding: 100px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  /*border: 1px solid rgb(0, 0, 0);*/
+  background-color: rgb(255, 255, 255);
+}
+
+th{
   background-color: #f1f1f1;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:hover {
+  background-color: #eef2f5;
+}
+
+
+#buscarTabla {
+  /*Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
 }
