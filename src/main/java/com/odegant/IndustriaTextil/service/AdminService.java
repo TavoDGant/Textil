@@ -26,4 +26,6 @@ public interface AdminService {
     ResponseEntity<HttpStatus> guardarCorte(Cortes cortes);
 
     ResponseEntity<HttpStatus> actualizarCorte(Cortes cortes);
+
+    ResponseEntity<List<Cortes>> cortesID(Integer fkec);
 }

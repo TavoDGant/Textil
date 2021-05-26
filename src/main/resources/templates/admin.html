@@ -187,13 +187,21 @@
     <!--Ventana Modal-->
     <div id="detalles" class="modal">
         <div class="modal__content">
-            <h1>CSS Only Modal</h1>
+            <h1 id="nombre_empleado" style="text-align: center;"></h1>
+
+            <table id="tablaModal">
+                <thead class="header">
+                    <tr>
+                        <th>Cortes</th>
+                        <th>Fecha del Corte</th>
+                        <th>Sueldo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
     
-            <p>
-                You can use the :target pseudo-class to create a modals with Zero JavaScript. Enjoy!
-            </p>
-    
-            <a href="#" class="modal__close">&times;</a>
+            <a href="#" class="modal__close" onclick="borrarTablaModal()">&times;</a>
         </div>
     </div>
     <!--Fin Ventana Modal-->

@@ -122,4 +122,13 @@ public class AdminServiceImpl implements AdminService {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    public ResponseEntity<List<Cortes>> cortesID(Integer fkec){
+        List<Cortes> cortes = corteDAO.findByFkec(fkec);
+        if(cortes.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.ok(cortes);
+        }
+    }
 }
