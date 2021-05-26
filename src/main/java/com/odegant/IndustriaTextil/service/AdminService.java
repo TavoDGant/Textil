@@ -5,6 +5,7 @@ import com.odegant.IndustriaTextil.entity.Empleado;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public interface AdminService {
 
     ResponseEntity<HttpStatus> guardarEmpleado(Empleado empleado);
 
-    ResponseEntity<Optional<Empleado>> empleadoID(Integer id);
+    ResponseEntity<ArrayList<Empleado>> empleadoID(Integer id);
 
     ResponseEntity<HttpStatus> eliminarEmpleado(Integer id);
 

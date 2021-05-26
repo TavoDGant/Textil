@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class ApiController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Optional<Empleado>> buscarEmpleado(@PathVariable Integer id){
+    public ResponseEntity<ArrayList<Empleado>> buscarEmpleado(@PathVariable Integer id){
         return adminService.empleadoID(id);
     }
 

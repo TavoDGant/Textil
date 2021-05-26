@@ -25,15 +25,15 @@ function listaEmpleados(data) {
             <td>${totalCortes}</td>
             <td>$ ${sueldoTotal}</td>
             <td> 
-              <a href="#detalles" onclick="cortesDetalles('${nombre}','${data[i].id_empleado}')"> 
+              <a th:href="@{detalles.html}"></a> 
               <i class="fa fa-info-circle fa-2x info" aria-hidden="true"></i>
-              </a> 
+              
             </td>
         `;
     tabla.appendChild(row);
   }
 }
-listaEmpleados(empleados);
+//listaEmpleados(empleados);
 
 function cortesDetalles(nombre, id) {
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

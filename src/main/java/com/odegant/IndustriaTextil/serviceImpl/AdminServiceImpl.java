@@ -10,10 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -47,9 +45,11 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
-    public ResponseEntity<Optional<Empleado>> empleadoID(Integer id){
+    public ResponseEntity<ArrayList<Empleado>> empleadoID(Integer id){
+        Optional<Empleado> optionalEmpleado = empleadoDAO.findById(id);
+        ArrayList<Empleado> filteredList = (ArrayList<Empleado>) optionalEmpleado.stream().collect(Collectors.toList());
         try {
-            return ResponseEntity.ok(empleadoDAO.findById(id));
+            return ResponseEntity.ok(filteredList);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }

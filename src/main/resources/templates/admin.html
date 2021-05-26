@@ -160,17 +160,29 @@
             </div>
 
 
-            <table id="miTabla">
+            <table id="miTabla"> <!--id="miTabla"-->
                 <thead class="header">
                     <tr>
                         <th>Nombre</th>
-                        <th>Edad</th>
-                        <th>Cortes Totales Realizados</th>
-                        <th>Sueldo Total Pagado</th>
+                        <th>Ultimo Corte Registrado</th>
+                        <th>Fecha Ultimo Corte Registrado</th>
+                        <th>Ultimo Sueldo Registrado</th>
                         <th>Mas Detalles</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    <tr th:each="empleado : ${empleados.body}">
+                        <td th:text="${empleado.nombre} + ' ' + ${empleado.ape_pat} + ' ' + ${empleado.ape_mat}"></td>
+                        <td th:with="totalCortes=${#arrays.length(empleado.cortes)}" th:text="${empleado.cortes[totalCortes-1].cortes}"></td>
+                        <td th:with="totalFecha=${#arrays.length(empleado.cortes)}" th:text="${#calendars.format(empleado.cortes[totalFecha-1].fecha_corte, 'dd/MM/yyyy')}"></td>
+                        <td th:with="totalSueldo=${#arrays.length(empleado.cortes)}" th:text="${empleado.cortes[totalSueldo-1].sueldo}"></td>
+                        <td>
+                            <a th:href="@{admin/detalles/} + ${empleado.id_empleado}">
+                            <i class="fa fa-info-circle fa-2x info" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
 
             </table>
         </div>
