@@ -68,7 +68,6 @@ public class AdminServiceImpl implements AdminService {
         try {
             empleadoDAO.save(empleado);
             return ResponseEntity.ok().build();
-
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
