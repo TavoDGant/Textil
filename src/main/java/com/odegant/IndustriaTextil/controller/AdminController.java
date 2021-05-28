@@ -1,12 +1,16 @@
 package com.odegant.IndustriaTextil.controller;
 
+import com.odegant.IndustriaTextil.entity.Cortes;
+import com.odegant.IndustriaTextil.entity.Empleado;
 import com.odegant.IndustriaTextil.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("admin")
@@ -22,10 +26,20 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("detalles/{id}")
+    @GetMapping("/detalles/{id}")
     public String detallesEmpleado(Model model, @PathVariable Integer id){
-        model.addAttribute("detalleEmpleado", adminService.empleadoID(id));
+        ResponseEntity<ArrayList<Empleado>> empleados = adminService.empleadoID(id);
+        int fk = Objects.requireNonNull(empleados.getBody()).get(0).getId_empleado();
+        Cortes corte = new Cortes();
+        corte.setFkec(fk);
+        model.addAttribute("detalleEmpleado", empleados);
+        model.addAttribute("corte", corte);
         return "detalles";
     }
 
+    @PostMapping("detalles/agregarCorte")
+    public String agregarCorte(@ModelAttribute("corte") Cortes corte){
+        adminService.guardarCorte(corte);
+        return "redirect:/admin/detalles/"+corte.getFkec();
+    }
 }

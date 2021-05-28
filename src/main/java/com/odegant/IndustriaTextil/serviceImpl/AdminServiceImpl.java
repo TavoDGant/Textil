@@ -101,7 +101,6 @@ public class AdminServiceImpl implements AdminService {
             cortes.setSueldo(sueldo);
             corteDAO.save(cortes);
             return ResponseEntity.ok().build();
-
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }

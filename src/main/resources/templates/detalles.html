@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,21 +29,21 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex justify-content-center" th:href="@{/admin}">
                 <i class="fa fa-industry"></i>
-                <span>Industria Textil</span>
+                <span>Textiles</span>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0"/>
+            <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{/admin}">
-                    <i class="fa fa-tachometer fa-2x"></i>
+                    <i class="fa fa-tachometer"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider"/>
+            <hr class="sidebar-divider" />
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -52,13 +53,13 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fa fa-user fa-2x"></i>
+                    <i class="fa fa-user"></i>
                     <span>Nuevo</span>
                 </a>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider"/>
+            <hr class="sidebar-divider" />
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -68,7 +69,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fa fa-scissors fa-2x"></i>
+                    <i class="fa fa-scissors"></i>
                     <span>Cortes</span>
                 </a>
             </li>
@@ -82,7 +83,7 @@
             <!-- Nav Item - Reportes -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fa fa-file-text fa-2x"></i>
+                    <i class="fa fa-file-text"></i>
                     <span>Reportes</span>
                 </a>
             </li>
@@ -105,7 +106,9 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex">
-                        <h1 class="h3 mb-0 text-gray-800">Detalles de: <strong th:text="${detalleEmpleado.body[0].nombre} + ' ' + ${detalleEmpleado.body[0].ape_pat} + ' ' + ${detalleEmpleado.body[0].ape_mat}"></strong></h1>
+                        <h1 class="h3 mb-0 text-gray-800">Detalles de: <strong
+                                th:text="${detalleEmpleado.body[0].nombre} + ' ' + ${detalleEmpleado.body[0].ape_pat} + ' ' + ${detalleEmpleado.body[0].ape_mat}"></strong>
+                        </h1>
                     </div>
 
                     <!-- Topbar Navbar -->
@@ -127,6 +130,13 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <!-- Agregar CORTE -->
+                    <div class="mb-4">
+                        <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+                            data-target="#nuevoCorte"><i class="fa fa-plus text-white-50"></i> Agregar Corte</a>
+                    </div>
+                    <!-- FIN Agregar CORTE -->
+
                     <!-- Tabla de Cortes -->
                     <div class="row">
                         <div class="col-xl-12">
@@ -134,7 +144,8 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Lista de los Cortes de: <span th:text="${detalleEmpleado.body[0].nombre}"></span> </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Lista de los Cortes de: <span
+                                            th:text="${detalleEmpleado.body[0].nombre}"></span> </h6>
                                     <i class="text-primary fa fa-table"></i>
                                 </div>
                                 <!-- Card Body -->
@@ -152,7 +163,8 @@
                                         <tbody th:each="empleado : ${detalleEmpleado.body}">
                                             <tr th:each="corte : ${empleado.cortes}">
                                                 <th th:text="${corte.cortes}"></th>
-                                                <th th:text="${#calendars.format(corte.fecha_corte, 'dd/MM/yyyy')}"></th>
+                                                <th th:text="${#calendars.format(corte.fecha_corte, 'dd/MM/yyyy')}">
+                                                </th>
                                                 <th th:text="'$ '+${corte.sueldo}"></th>
                                             </tr>
                                         </tbody>
@@ -163,83 +175,6 @@
                     </div>
                     <!-- Fin Tabla de Cortes -->
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Color System -->
-                            <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-primary text-white shadow">
-                                        <div class="card-body">
-                                            Primary
-                                            <div class="text-white-50 small">#4e73df</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-success text-white shadow">
-                                        <div class="card-body">
-                                            Success
-                                            <div class="text-white-50 small">#1cc88a</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                    </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
-                                </div>
-                            </div>
-
-                            <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -248,7 +183,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ODegante 2021</span>
+                        <span>Copyright &copy; Octavio Degante 2021</span>
                     </div>
                 </div>
             </footer>
@@ -257,6 +192,52 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
+
+
+    <!-- Agregar Corte Modal-->
+    <div class="modal fade" id="nuevoCorte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-scissors"></i>
+                        Agregar Corte</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{agregarCorte}" th:object="${corte}" method="POST">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input th:field="*{fkec}" type="hidden" class="form-control"
+                                        th:value="${fkec}" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="small mb-1">Cortes</label>
+                                    <input th:field="*{cortes}" class="form-control" type="number" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="small mb-1">Fecha del Corte</label>
+                                    <input th:field="*{fecha_corte}" class="form-control" type="date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <input class="btn btn-primary" type="submit" value="Agregar"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- FIN Agregar Corte Modal-->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -298,4 +279,5 @@
     <script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
 
 </body>
+
 </html>
