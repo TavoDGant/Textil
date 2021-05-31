@@ -52,7 +52,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/admin/nuevo-empleado}">
                     <i class="fa fa-user"></i>
                     <span>Nuevo</span>
                 </a>
@@ -175,6 +175,24 @@
                     </div>
                     <!-- Fin Tabla de Cortes -->
 
+                    <!--GRAFICAS
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Cortes Quincenales de: <span th:text="${detalleEmpleado.body[0].nombre}"></span> </h6>
+                                    <i class="text-primary fa fa-line-chart"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="graficaDetalles"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    FIN GRAFICAS-->
                 </div>
                 <!-- /.container-fluid -->
             </div>

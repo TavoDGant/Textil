@@ -27,11 +27,15 @@ public class Empleado {
     @Column(name = "ape_mat", nullable = false, length = 30)
     private String ape_mat;
 
+    @Column(name = "registro", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Calendar registro;
+
     @Column(name = "nacimiento", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Calendar nacimiento;
 
-    @JoinColumn(name = "fkec", referencedColumnName = "id_empleado")
+    @JoinColumn(name = "fkec", referencedColumnName = "id_empleado", nullable = true)
     @OneToMany(targetEntity = Cortes.class, cascade = CascadeType.ALL)
     private List<Cortes> cortes;
 }

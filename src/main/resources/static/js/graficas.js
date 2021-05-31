@@ -1,6 +1,8 @@
 var tar = tarjeta;
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
+var graficaDetalles = document.getElementById("graficaDetalles");
+
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {

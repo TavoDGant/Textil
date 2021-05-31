@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +52,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{admin/nuevo-empleado}">
                     <i class="fa fa-user"></i>
                     <span>Nuevo</span>
                 </a>
@@ -167,7 +168,7 @@
                             </div>
                         </div>
 
-                        <!-- Todo el Anio -->
+                        <!-- To do el Anio -->
                         <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -252,29 +253,33 @@
                                         <thead>
                                             <tr>
                                                 <th class="th-sm">Nombre</th>
-                                                <th class="th-sm">Ultimo Corte Registrado</th>
-                                                <th class="th-sm">Fecha Ultimo Corte Registrado</th>
-                                                <th class="th-sm">Ultimo Sueldo Registrado</th>
+                                                <th class="th-sm">Apellido Paterno</th>
+                                                <th class="th-sm">Apellido Materno</th>
+                                                <th class="th-sm">Fecha de registro</th>
                                                 <th class="th-sm">Mas Detalles</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="empleado : ${empleados.body}">
-                                                <td
-                                                    th:text="${empleado.nombre} + ' ' + ${empleado.ape_pat} + ' ' + ${empleado.ape_mat}">
-                                                </td>
-                                                <td th:with="totalCortes=${#arrays.length(empleado.cortes)}"
-                                                    th:text="${empleado.cortes[totalCortes-1].cortes}"></td>
-                                                <td th:with="totalFecha=${#arrays.length(empleado.cortes)}"
-                                                    th:text="${#calendars.format(empleado.cortes[totalFecha-1].fecha_corte, 'dd/MM/yyyy')}">
-                                                </td>
-                                                <td th:with="totalSueldo=${#arrays.length(empleado.cortes)}"
-                                                    th:text="'$ '+${empleado.cortes[totalSueldo-1].sueldo}"></td>
+                                                <!--td th:text="${empleado.nombre} + ' ' + ${empleado.ape_pat} + ' ' + ${empleado.ape_mat}"></td-->
+                                                <td th:text="${empleado.nombre}"></td>
+                                                <td th:text="${empleado.ape_pat}"></td>
+                                                <td th:text="${empleado.ape_mat}"></td>
+                                                <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}"></td>
                                                 <td>
                                                     <a th:href="@{admin/detalles/} + ${empleado.id_empleado}">
                                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
+                                                <!--td th:with="totalCortes=${#arrays.length(empleado.cortes)}"
+                                                    th:text="${empleado.cortes[totalCortes-1].cortes}"></td>
+                                                <td th:with="totalFecha=${#arrays.length(empleado.cortes)}"
+                                                    th:text="${#calendars.format(empleado.cortes[totalFecha-1].fecha_corte, 'dd/MM/yyyy')}">
+                                                </td>
+                                                <td th:with="totalSueldo=${#arrays.length(empleado.cortes)}"
+                                                    th:text="'$ '+${empleado.cortes[totalSueldo-1].sueldo}">
+                                                </td-->
+                                                
                                             </tr>
                                         </tbody>
                                     </table>
@@ -313,7 +318,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Desea salir del sistema?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -347,7 +352,6 @@
         const tarjeta = [[${ tarjetas }]];
     </script>
     <script th:src="@{/js/graficas.js}"></script>
-
 </body>
 
 </html>

@@ -32,12 +32,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public ResponseEntity<HttpStatus> guardarEmpleado(Empleado empleado){
+        empleado.setRegistro(Calendar.getInstance());
         try {
-            for (Cortes c:empleado.getCortes()) {
-                int cort = c.getCortes();
-                Double sueldo = cort * 0.25;
-                c.setSueldo(sueldo);
-            }
             empleadoDAO.save(empleado);
             return ResponseEntity.ok().build();
         }catch (Exception e){

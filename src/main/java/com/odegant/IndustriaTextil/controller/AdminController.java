@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("admin")
@@ -37,9 +40,22 @@ public class AdminController {
         return "detalles";
     }
 
-    @PostMapping("detalles/agregarCorte")
+    @PostMapping("/detalles/agregarCorte")
     public String agregarCorte(@ModelAttribute("corte") Cortes corte){
         adminService.guardarCorte(corte);
         return "redirect:/admin/detalles/"+corte.getFkec();
+    }
+
+    @GetMapping("/nuevo-empleado")
+    public String nuevoEmpleado(Model model){
+        Empleado empleado = new Empleado();
+        model.addAttribute("empleado", empleado);
+        return "nuevo-empleado";
+    }
+
+    @PostMapping("/agregar")
+    public String agregarEmpleado(@ModelAttribute("empleado") Empleado empleado){
+        adminService.guardarEmpleado(empleado);
+        return "redirect:/admin";
     }
 }
