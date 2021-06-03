@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
 @RequestMapping("v1/api/admin/empleado")
@@ -44,6 +44,11 @@ public class ApiController {
         return adminService.actualizarEmpleado(empleado);
     }
 
+    @GetMapping("mensuales")
+    public Map<Integer, List> mensulaes(){
+        return adminService.cortesMensuales();
+    }
+
     //-----------------------------CORTES--------------------------------------------------------
     @GetMapping("corte/{fkec}")
     public ResponseEntity<List<Cortes>> corteID(@PathVariable Integer fkec){
@@ -53,6 +58,11 @@ public class ApiController {
     @PostMapping("corte/nuevo")
     public ResponseEntity<HttpStatus> guardarCorte(@RequestBody Cortes cortes){
         return adminService.guardarCorte(cortes);
+    }
+
+    @DeleteMapping("corte/eliminar/{id}")
+    public ResponseEntity<HttpStatus> eliminarCorte(@PathVariable("id") Integer id){
+        return adminService.eliminarCorte(id);
     }
 
     @PutMapping("corte/actualizar")

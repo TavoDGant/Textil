@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -139,7 +139,8 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Cortes del Mes Anterior</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                                th:text="${#numbers.formatInteger(tarjetas.get(0),3,'COMMA')}"></div>
+                                                th:text="${#numbers.formatInteger(tarjetas.Cortes_Mes_Anterior,3,'COMMA')}">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-reply fa-2x"></i>
@@ -158,7 +159,8 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Cortes del Mes Actual</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                                th:text="${#numbers.formatInteger(tarjetas.get(1),3,'COMMA')}"></div>
+                                                th:text="${#numbers.formatInteger(tarjetas.Cortes_Mes_Actual,3,'COMMA')}">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-check-square-o fa-2x"></i>
@@ -177,7 +179,8 @@
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Cortes Totales del Año</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                                th:text="${#numbers.formatInteger(tarjetas.get(2),3,'COMMA')}"></div>
+                                                th:text="${#numbers.formatInteger(tarjetas.Cortes_Anio,3,'COMMA')}">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-share fa-2x"></i>
@@ -257,29 +260,27 @@
                                                 <th class="th-sm">Apellido Materno</th>
                                                 <th class="th-sm">Fecha de registro</th>
                                                 <th class="th-sm">Mas Detalles</th>
+                                                <th class="th-sm">Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="empleado : ${empleados.body}">
-                                                <!--td th:text="${empleado.nombre} + ' ' + ${empleado.ape_pat} + ' ' + ${empleado.ape_mat}"></td-->
                                                 <td th:text="${empleado.nombre}"></td>
                                                 <td th:text="${empleado.ape_pat}"></td>
                                                 <td th:text="${empleado.ape_mat}"></td>
-                                                <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}"></td>
+                                                <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}">
+                                                </td>
                                                 <td>
                                                     <a th:href="@{admin/detalles/} + ${empleado.id_empleado}">
                                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
-                                                <!--td th:with="totalCortes=${#arrays.length(empleado.cortes)}"
-                                                    th:text="${empleado.cortes[totalCortes-1].cortes}"></td>
-                                                <td th:with="totalFecha=${#arrays.length(empleado.cortes)}"
-                                                    th:text="${#calendars.format(empleado.cortes[totalFecha-1].fecha_corte, 'dd/MM/yyyy')}">
+                                                <td>
+                                                    <a th:href="@{/admin/eliminar/{id}(id=${empleado.id_empleado})}">
+                                                        <i class="text-danger fa fa-trash">
+                                                        </i>
+                                                    </a>
                                                 </td>
-                                                <td th:with="totalSueldo=${#arrays.length(empleado.cortes)}"
-                                                    th:text="'$ '+${empleado.cortes[totalSueldo-1].sueldo}">
-                                                </td-->
-                                                
                                             </tr>
                                         </tbody>
                                     </table>
@@ -311,6 +312,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fa fa-arrow-up"></i>
     </a>
+
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

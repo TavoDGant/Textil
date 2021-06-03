@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 public interface AdminService {
 
@@ -21,7 +21,9 @@ public interface AdminService {
 
     ResponseEntity<HttpStatus> actualizarEmpleado(Empleado empleado);
 
-    List<Integer> totalMesCards();
+    Map<String, Integer> totalMesCards();
+
+    Map<Integer, List> cortesMensuales();
 
     //-----------------CORTES---------------------------------------------
     ResponseEntity<HttpStatus> guardarCorte(Cortes cortes);
@@ -29,4 +31,6 @@ public interface AdminService {
     ResponseEntity<HttpStatus> actualizarCorte(Cortes cortes);
 
     ResponseEntity<List<Cortes>> cortesID(Integer fkec);
+
+    ResponseEntity<HttpStatus> eliminarCorte(Integer id);
 }

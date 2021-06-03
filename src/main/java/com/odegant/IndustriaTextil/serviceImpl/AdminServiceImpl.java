@@ -69,24 +69,31 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
-    public List<Integer> totalMesCards() {
+    public Map<String, Integer> totalMesCards() {
         List<Cortes> cortesList = corteDAO.findAll();
-        ArrayList<Integer> cortesTarjetas = new ArrayList<Integer>();
-        int sumaMesActual = cortesList.stream()
+        Map<String, Integer> cortesTarjetas = new HashMap<>();
+        cortesTarjetas.put( "Cortes_Mes_Actual",cortesList.stream()
                 .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
                         && cortes.getFecha_corte().get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH))
-                .mapToInt(Cortes::getCortes).sum();
-        int sumaMesAnterior = cortesList.stream()
+                .mapToInt(Cortes::getCortes).sum());
+        cortesTarjetas.put("Cortes_Mes_Anterior",cortesList.stream()
                 .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
                         && cortes.getFecha_corte().get(Calendar.MONTH) == Calendar.getInstance().get((Calendar.MONTH))-1)
-                .mapToInt(Cortes::getCortes).sum();
-        int sumaDelAnio = cortesList.stream()
+                .mapToInt(Cortes::getCortes).sum());
+        cortesTarjetas.put("Cortes_Anio",cortesList.stream()
                 .filter(cortes -> cortes.getFecha_corte().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR))
-                .mapToInt(Cortes::getCortes).sum();
-        cortesTarjetas.add(sumaMesAnterior);
-        cortesTarjetas.add(sumaMesActual);
-        cortesTarjetas.add(sumaDelAnio);
+                .mapToInt(Cortes::getCortes).sum());
         return cortesTarjetas;
+    }
+
+    public Map<Integer, List> cortesMensuales(){
+        List<Cortes> cortesList = corteDAO.findAll();
+        Map<Integer, List> mapa = new HashMap<>();
+        mapa.put(1, cortesList.stream()
+                .filter(cortes -> cortes.getFecha_corte().get(Calendar.MONTH) == 4)
+                .collect(Collectors.toList()));
+        System.out.println(mapa);
+        return mapa;
     }
 
     //-----------------CORTES---------------------------------------------
@@ -123,6 +130,15 @@ public class AdminServiceImpl implements AdminService {
             return ResponseEntity.noContent().build();
         }else{
             return ResponseEntity.ok(cortes);
+        }
+    }
+
+    public ResponseEntity<HttpStatus> eliminarCorte(Integer id){
+        try {
+            corteDAO.deleteById(id);
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
         }
     }
 }

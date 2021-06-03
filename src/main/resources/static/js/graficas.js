@@ -8,7 +8,7 @@ var myPieChart = new Chart(ctx, {
   data: {
     labels: ["Anterior Mes", "Actual Mes"],
     datasets: [{
-      data: [tar[0], tar[1]],
+      data: [tar.Cortes_Mes_Anterior, tar.Cortes_Mes_Actual],
       backgroundColor: ['#4e73df', '#1cc88a'],
       hoverBackgroundColor: ['#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
