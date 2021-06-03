@@ -256,8 +256,6 @@
                                         <thead>
                                             <tr>
                                                 <th class="th-sm">Nombre</th>
-                                                <th class="th-sm">Apellido Paterno</th>
-                                                <th class="th-sm">Apellido Materno</th>
                                                 <th class="th-sm">Fecha de registro</th>
                                                 <th class="th-sm">Mas Detalles</th>
                                                 <th class="th-sm">Eliminar</th>
@@ -265,9 +263,7 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="empleado : ${empleados.body}">
-                                                <td th:text="${empleado.nombre}"></td>
-                                                <td th:text="${empleado.ape_pat}"></td>
-                                                <td th:text="${empleado.ape_mat}"></td>
+                                                <td th:text="${empleado.nombre} ${empleado.ape_pat} ${empleado.ape_mat}"></td>
                                                 <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}">
                                                 </td>
                                                 <td>
