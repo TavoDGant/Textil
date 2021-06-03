@@ -263,7 +263,7 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="empleado : ${empleados.body}">
-                                                <td th:text="${empleado.nombre} ${empleado.ape_pat} ${empleado.ape_mat}"></td>
+                                                <td th:text="${empleado.nombre}+' '+${empleado.ape_pat}+' '+${empleado.ape_mat}"></td>
                                                 <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}">
                                                 </td>
                                                 <td>
