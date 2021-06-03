@@ -156,16 +156,6 @@
                                                     <label class="small mb-1">Fecha de Nacimiento</label>
                                                     <input th:field="*{nacimiento}" type="date" class="form-control form-control-user">
                                                 </div>
-                                                <!--div class="col-md-12" th:object="${empleado.cortes}">
-                                                    <div class="form-group">
-                                                        <input th:field="*{cortes}" type="hidden" class="form-control"
-                                                            th:value="${0}" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input th:field="*{fecha_corte}" type="hidden" class="form-control"
-                                                            th:value="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy')}" />
-                                                    </div>
-                                                </div-->
                                             </div>
                                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Empleado">
                                             </input>
@@ -204,15 +194,16 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Desea salir del sistema?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <form action="/logout" method="POST">
+                            <input type="submit" class="btn btn-primary" value="Salir">
+                        </form>
                     </div>
                 </div>
             </div>
