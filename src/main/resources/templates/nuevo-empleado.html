@@ -144,7 +144,7 @@
                                                     <label class="small mb-1">Nombre</label>
                                                     <input th:field="*{nombre}" type="text"
                                                         class="form-control form-control-user">
-                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                    <div class="alert alert-info"
                                                         th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                                     <label class="small mb-1">Apellido Paterno</label>
                                                     <input th:field="*{ape_pat}" type="text"
                                                         class="form-control form-control-user">
-                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                    <div class="alert alert-info"
                                                         th:if="${#fields.hasErrors('ape_pat')}" th:errors="*{ape_pat}">
                                                     </div>
                                                 </div>
@@ -160,7 +160,7 @@
                                                     <label class="small mb-1">Apellido Materno</label>
                                                     <input th:field="*{ape_mat}" type="text"
                                                         class="form-control form-control-user">
-                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                    <div class="alert alert-info"
                                                         th:if="${#fields.hasErrors('ape_mat')}" th:errors="*{ape_mat}">
                                                     </div>
                                                 </div>
@@ -168,7 +168,7 @@
                                                     <label class="small mb-1">Fecha de Nacimiento</label>
                                                     <input th:field="*{nacimiento}" type="date"
                                                         class="form-control form-control-user">
-                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                    <div class="alert alert-info"
                                                         th:if="${#fields.hasErrors('nacimiento')}"
                                                         th:errors="*{nacimiento}">
                                                     </div>

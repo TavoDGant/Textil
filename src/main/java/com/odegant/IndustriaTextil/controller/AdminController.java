@@ -3,13 +3,13 @@ package com.odegant.IndustriaTextil.controller;
 import com.odegant.IndustriaTextil.entity.Cortes;
 import com.odegant.IndustriaTextil.entity.Empleado;
 import com.odegant.IndustriaTextil.service.AdminService;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -41,9 +41,14 @@ public class AdminController {
     }
 
     @PostMapping("/detalles/agregarCorte")
-    public String agregarCorte(@ModelAttribute("corte") Cortes corte){
-        adminService.guardarCorte(corte);
-        return "redirect:/admin/detalles/"+corte.getFkec();
+    public String agregarCorte(@Valid Cortes corte, BindingResult result){
+        if(result.hasErrors()){
+            return "redirect:/admin/detalles/"+corte.getFkec();
+        }
+        else{
+            adminService.guardarCorte(corte);
+            return "redirect:/admin/detalles/"+corte.getFkec();
+        }
     }
 
     @GetMapping("/eliminar/{id}")

@@ -4,6 +4,10 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 @Entity
@@ -18,10 +22,12 @@ public class Cortes {
     private Integer id_cortes;
 
     @Column(name = "cortes", nullable = true)
+    @NotNull(message = "{numeroCorte.Cortes.cortes}")
     private Integer cortes;
 
     @Column(name = "fecha_corte", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "{fechaCorte.Cortes.fecha_corte}")
     private Calendar fecha_corte;
 
     @Column(name = "sueldo", nullable = true)
