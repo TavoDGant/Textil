@@ -24,71 +24,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Barra de Navegacion -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex justify-content-center" th:href="@{/admin}">
-                <i class="fa fa-industry"></i>
-                <span>Textiles</span>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin}">
-                    <i class="fa fa-tachometer"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider" />
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Empleado
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{~/admin/nuevo-empleado}">
-                    <i class="fa fa-user"></i>
-                    <span>Nuevo</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider" />
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Cortes
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-scissors"></i>
-                    <span>Cortes</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Encabezado -->
-            <div class="sidebar-heading">
-                Reportes
-            </div>
-            <!-- Nav Item - Reportes -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-file-text"></i>
-                    <span>Reportes</span>
-                </a>
-            </li>
-        </ul>
-        <!-- Fin Barra de Navegacion -->
+        <!--Barra de Navegacion-->
+        <ul th:replace="plantillas/plantilla::navegacion"></ul>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -144,8 +81,8 @@
                                                     <label class="small mb-1">Nombre</label>
                                                     <input th:field="*{nombre}" type="text"
                                                         class="form-control form-control-user">
-                                                    <div class="alert alert-info"
-                                                        th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                                                    <div class="alert alert-info" th:if="${#fields.hasErrors('nombre')}"
+                                                        th:errors="*{nombre}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
@@ -189,13 +126,7 @@
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Octavio Degante 2021</span>
-                    </div>
-                </div>
-            </footer>
+            <footer th:replace="plantillas/plantilla::footer"></footer>
             <!-- End of Footer -->
         </div>
     </div>
@@ -207,26 +138,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Desea salir del sistema?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <form action="/logout" method="POST">
-                        <input type="submit" class="btn btn-primary" value="Salir">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FIN Logout Modal-->
+    <div th:replace="plantillas/plantilla::salir"></div>
 
     <!-- Bootstrap core JavaScript-->
     <script th:src="@{/js/jquery.min.js}"></script>
