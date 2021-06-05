@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Plantilla</title>
 </head>
-
 <body>
-
     <!-- Barra de Navegacion bg-gray-900 -->
     <ul th:fragment="navegacion" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
@@ -73,7 +70,6 @@
         </li>
     </ul>
     <!-- Fin Barra de Navegacion -->
-
     <!-- Logout Modal-->
     <div th:fragment="salir" class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,7 +90,6 @@
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer th:fragment="footer" class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -104,8 +99,5 @@
         </div>
     </footer>
     <!-- End of Footer -->
-
-
 </body>
-
 </html>

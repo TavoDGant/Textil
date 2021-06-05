@@ -66,7 +66,7 @@ public class ApiController {
     }
 
     @PutMapping("corte/actualizar")
-    public ResponseEntity<HttpStatus> actualizarCorte(Cortes cortes){
+    public ResponseEntity<HttpStatus> actualizarCorte(@RequestBody Cortes cortes){
         return adminService.actualizarCorte(cortes);
     }
 }

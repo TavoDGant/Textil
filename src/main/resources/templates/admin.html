@@ -170,8 +170,9 @@
                                         <thead>
                                             <tr>
                                                 <th class="th-sm">Nombre</th>
-                                                <th class="th-sm">Fecha de registro</th>
-                                                <th class="th-sm">Mas Detalles</th>
+                                                <th class="th-sm">Registro</th>
+                                                <th class="th-sm">Detalles</th>
+                                                <th class="th-sm">Editar</th>
                                                 <th class="th-sm">Eliminar</th>
                                             </tr>
                                         </thead>
@@ -185,6 +186,11 @@
                                                 <td>
                                                     <a th:href="@{admin/detalles/} + ${empleado.id_empleado}">
                                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="text-success fa fa-pencil" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                                 <td>

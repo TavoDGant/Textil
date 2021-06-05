@@ -42,10 +42,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public ResponseEntity<ArrayList<Empleado>> empleadoID(Integer id){
-        Optional<Empleado> optionalEmpleado = empleadoDAO.findById(id);
-        ArrayList<Empleado> filteredList = (ArrayList<Empleado>) optionalEmpleado.stream().collect(Collectors.toList());
         try {
-            return ResponseEntity.ok(filteredList);
+            return ResponseEntity.ok(empleadoArrayList(id));
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
@@ -61,8 +59,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public ResponseEntity<HttpStatus> actualizarEmpleado(Empleado empleado){
+        Empleado nuevoEmpleado = empleadoDAO.getOne(empleado.getId_empleado());
+        nuevoEmpleado.setNombre(empleado.getNombre());
+        nuevoEmpleado.setApe_pat(empleado.getApe_pat());
+        nuevoEmpleado.setApe_mat(empleado.getApe_mat());
+        nuevoEmpleado.setNacimiento(empleado.getNacimiento());
         try {
-            empleadoDAO.save(empleado);
+            empleadoDAO.save(nuevoEmpleado);
             return ResponseEntity.ok().build();
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -99,9 +102,7 @@ public class AdminServiceImpl implements AdminService {
     //-----------------CORTES---------------------------------------------
     public ResponseEntity<HttpStatus> guardarCorte(Cortes cortes){
         try {
-            int cor = cortes.getCortes();
-            Double sueldo = cor * 0.25;
-            cortes.setSueldo(sueldo);
+            cortes.setSueldo(cortes.getCortes()*0.25);
             corteDAO.save(cortes);
             return ResponseEntity.ok().build();
         }catch (Exception e){
@@ -115,7 +116,7 @@ public class AdminServiceImpl implements AdminService {
             c.setId_cortes(cortes.getId_cortes());
             c.setCortes(cortes.getCortes());
             c.setFecha_corte(cortes.getFecha_corte());
-            c.setSueldo(cortes.getSueldo());
+            c.setSueldo(cortes.getCortes()*0.25);
             c.setFkec(cortes.getFkec());
             corteDAO.save(c);
             return ResponseEntity.ok().build();
@@ -140,5 +141,11 @@ public class AdminServiceImpl implements AdminService {
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    //--------------Herramienta
+    private ArrayList<Empleado> empleadoArrayList(Integer id){
+        Optional<Empleado> empleados = empleadoDAO.findById(id);
+        return (ArrayList<Empleado>) empleados.stream().collect(Collectors.toList());
     }
 }
