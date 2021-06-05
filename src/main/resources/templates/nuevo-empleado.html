@@ -1,52 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Detalles</title>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <script src="https://use.fontawesome.com/358cf796e0.js"></script>
-
-    <!-- Custom styles for this template-->
-    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
-    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}">
-
-</head>
-
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content=""><title>Detalles</title><link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><script src="https://use.fontawesome.com/358cf796e0.js"></script><link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}"><link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}"></head>
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!--Barra de Navegacion-->
         <ul th:replace="plantillas/plantilla::navegacion"></ul>
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex">
                         <h1 class="h3 mb-0 text-gray-800">Nuevo Empleado
                         </h1>
                     </div>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -139,17 +111,12 @@
 
     <!-- Logout Modal-->
     <div th:replace="plantillas/plantilla::salir"></div>
-
     <!-- Bootstrap core JavaScript-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
     <!-- Core plugin JavaScript-->
     <script th:src="@{/js/jquery.easing.min.js}"></script>
-
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
-
 </body>
-
 </html>

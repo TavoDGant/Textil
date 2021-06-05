@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Administrador | Dashboard</title>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <script src="https://use.fontawesome.com/358cf796e0.js"></script>
-
-    <!-- Custom styles for this template-->
-    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
-    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}">
-
-</head>
-
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content=""><title>Administrador | Dashboard</title><link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><script src="https://use.fontawesome.com/358cf796e0.js"></script><link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}"><link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}"></head>
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!--Barra de Navegacion-->
         <ul th:replace="plantillas/plantilla::navegacion"></ul>
-
         <!-- CONTENIDO -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -224,7 +201,6 @@
                         </div>
                     </div>
                     <!-- Fin Tabla de Empleados -->
-
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -241,24 +217,19 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fa fa-arrow-up"></i>
     </a>
-
      <!-- Logout Modal-->
     <div th:replace="plantillas/plantilla::salir"></div>
 
     <!-- Bootstrap core JavaScript-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
     <!-- Core plugin JavaScript-->
     <script th:src="@{/js/jquery.easing.min.js}"></script>
-
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
-
     <!-- Page level plugins -->
     <script th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
-
     <!-- Graficas y Tablas-->
     <script th:src="@{/js/Chart.min.js}"></script>
     <script th:inline="javascript">
@@ -266,5 +237,4 @@
     </script>
     <script th:src="@{/js/graficas.js}"></script>
 </body>
-
 </html>
