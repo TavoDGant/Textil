@@ -67,7 +67,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item" disable>
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-scissors"></i>
                     <span>Cortes</span>
@@ -115,7 +115,7 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item">            
+                        <li class="nav-item">
                             <a href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fa fa-sign-out"></i>
                                 Cerrar Sesion
@@ -202,7 +202,6 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Cortes Quincenales</h6>
                                     <i class="text-primary fa fa-line-chart"></i>
                                 </div>
-                                <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
@@ -210,7 +209,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Pie Chart -->
+                        <!--Pie Chart -->
+
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -263,7 +263,9 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="empleado : ${empleados.body}">
-                                                <td th:text="${empleado.nombre}+' '+${empleado.ape_pat}+' '+${empleado.ape_mat}"></td>
+                                                <td
+                                                    th:text="${empleado.nombre}+' '+${empleado.ape_pat}+' '+${empleado.ape_mat}">
+                                                </td>
                                                 <td th:text="${#calendars.format(empleado.registro, 'dd/MM/yyyy')}">
                                                 </td>
                                                 <td>

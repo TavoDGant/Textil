@@ -142,22 +142,40 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Nombre</label>
-                                                    <input th:field="*{nombre}" type="text" class="form-control form-control-user">
+                                                    <input th:field="*{nombre}" type="text"
+                                                        class="form-control form-control-user">
+                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                        th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Apellido Paterno</label>
-                                                    <input th:field="*{ape_pat}" type="text" class="form-control form-control-user">
+                                                    <input th:field="*{ape_pat}" type="text"
+                                                        class="form-control form-control-user">
+                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                        th:if="${#fields.hasErrors('ape_pat')}" th:errors="*{ape_pat}">
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Apellido Materno</label>
-                                                    <input th:field="*{ape_mat}" type="text" class="form-control form-control-user">
+                                                    <input th:field="*{ape_mat}" type="text"
+                                                        class="form-control form-control-user">
+                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                        th:if="${#fields.hasErrors('ape_mat')}" th:errors="*{ape_mat}">
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Fecha de Nacimiento</label>
-                                                    <input th:field="*{nacimiento}" type="date" class="form-control form-control-user">
+                                                    <input th:field="*{nacimiento}" type="date"
+                                                        class="form-control form-control-user">
+                                                    <div class="alet alert-warning alert-dismissible fade show"
+                                                        th:if="${#fields.hasErrors('nacimiento')}"
+                                                        th:errors="*{nacimiento}">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar Empleado">
+                                            <input type="submit" class="btn btn-primary btn-user btn-block"
+                                                value="Registrar Empleado">
                                             </input>
                                         </form>
                                     </div>
@@ -181,44 +199,44 @@
             <!-- End of Footer -->
         </div>
     </div>
-        <!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-arrow-up"></i>
-        </a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Desea salir del sistema?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <form action="/logout" method="POST">
-                            <input type="submit" class="btn btn-primary" value="Salir">
-                        </form>
-                    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Desea salir del sistema?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <form action="/logout" method="POST">
+                        <input type="submit" class="btn btn-primary" value="Salir">
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- FIN Logout Modal-->
+    </div>
+    <!-- FIN Logout Modal-->
 
-        <!-- Bootstrap core JavaScript-->
-        <script th:src="@{/js/jquery.min.js}"></script>
-        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script th:src="@{/js/jquery.easing.min.js}"></script>
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/js/jquery.easing.min.js}"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
 
 </body>
 
