@@ -189,9 +189,52 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="#">
-                                                        <i class="text-success fa fa-pencil" aria-hidden="true"></i>
+                                                    <a href="#" data-toggle="modal" data-target="#actualizar">
+                                                        <i class="text-success fa fa-pencil" aria-hidden="true" ></i>
                                                     </a>
+                                                    <!-- Agregar Corte Modal-->
+    <div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-scissors"></i>
+                    Editar Empleado</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{actualizar}" th:object="${actualizar}" method="POST">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input th:field="*{id_empleado}" type="hidden" class="form-control" th:value="${empleado.id_empleado}" th:attr="value = ${empleado.id_empleado}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="small mb-1">Nombre</label>
+                                <input th:field="*{nombre}" class="form-control" type="text" th:value = "${empleado.nombre}" th:attr="value = ${empleado.nombre}" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="small mb-1">Fecha del Corte</label>
+                                <input field="*{fecha_corte}" class="form-control" type="date" required/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <input class="btn btn-primary" type="submit" value="Agregar"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
                                                 </td>
                                                 <td>
                                                     <a th:href="@{/admin/eliminar/{id}(id=${empleado.id_empleado})}">

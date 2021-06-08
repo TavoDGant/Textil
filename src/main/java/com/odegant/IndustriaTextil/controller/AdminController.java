@@ -26,6 +26,14 @@ public class AdminController {
     public String admin(Model model){
         model.addAttribute("empleados",adminService.listaEmpleados());
         model.addAttribute("tarjetas", adminService.totalMesCards());
+        Empleado empleado = new Empleado();
+        model.addAttribute("actualizar", empleado);
+        return "admin";
+    }
+
+    @PostMapping("actualizar")
+    public String actualizarEmpleado(@RequestBody Empleado empleado){
+        adminService.actualizarEmpleado(empleado);
         return "admin";
     }
 
