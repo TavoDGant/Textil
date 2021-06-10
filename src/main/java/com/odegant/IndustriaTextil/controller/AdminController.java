@@ -82,9 +82,13 @@ public class AdminController {
 
     @GetMapping("/editar-empleado/{id}")
     public String vistaEditarEmpleado(Model model, @PathVariable Integer id){
-        //ArrayList list = adminService.empleadoID(id);
+        ResponseEntity<ArrayList<Empleado>> list = adminService.empleadoID(id);
         Empleado empleado = new Empleado();
         empleado.setId_empleado(id);
+        empleado.setNombre(list.getBody().get(0).getNombre());
+        empleado.setApe_pat(list.getBody().get(0).getApe_pat());
+        empleado.setApe_mat(list.getBody().get(0).getApe_mat());
+        empleado.setNacimiento(list.getBody().get(0).getNacimiento());
         model.addAttribute("empleado", empleado);
         return "editar-empleado";
     }
