@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Detalles</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <script src="https://use.fontawesome.com/358cf796e0.js"></script>
+    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}">
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!--Barra de Navegacion-->
+        <ul th:replace="plantillas/plantilla::navegacion"></ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex">
+                        <h1 class="h3 mb-0 text-gray-800">Editar Empleado
+                        </h1>
+                    </div>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fa fa-sign-out"></i>
+                                Cerrar Sesion
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+                <div class="container-fluid ">
+                    <div class="container card">
+                        <!-- Empleado Nuevo -->
+                        <div class="card-body">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="p-4">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Crear Empleado!</h1>
+                                        </div>
+                                        <form class="user" th:action="@{actualizar}" th:object="${empleado.body[0]}" method="POST">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 p-2">
+                                                    <input th:field="*{id_empleado}" type="text" th:value="${empleado.body[0].id_empleado}"
+                                                        class="form-control form-control-user">
+                                                </div>
+                                                <div class="col-sm-12 p-2">
+                                                    <label class="small mb-1">Nombre</label>
+                                                    <input th:field="*{nombre}" type="text" th:value="${empleado.body[0].nombre}"
+                                                        class="form-control form-control-user">
+                                                </div>
+                                                <div class="col-sm-12 p-2">
+                                                    <label class="small mb-1">Apellido Paterno</label>
+                                                    <input th:field="*{ape_pat}" type="text" th:value="${empleado.body[0].ape_pat}"
+                                                        class="form-control form-control-user">
+                                                </div>
+                                                <div class="col-sm-12 p-2">
+                                                    <label class="small mb-1">Apellido Materno</label>
+                                                    <input th:field="*{ape_mat}" type="text" th:value="${empleado.body[0].ape_mat}"
+                                                        class="form-control form-control-user">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 p-2">
+                                                    <label class="small mb-1">Fecha de Nacimiento</label>
+                                                    <input th:field="*{nacimiento}" type="date" th:value="${empleado.body[0].nacimiento}"
+                                                        class="form-control form-control-user">
+                                                </div>
+                                            </div>
+                                            <input type="submit" class="btn btn-primary btn-user btn-block"
+                                                value="Actualizar Empleado">
+                                            </input>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Empleado Nuevo -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer th:replace="plantillas/plantilla::footer"></footer>
+            <!-- End of Footer -->
+        </div>
+    </div>
+    <!-- End of Content Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div th:replace="plantillas/plantilla::salir"></div>
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/js/jquery.easing.min.js}"></script>
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <script th:inline="javascript">
+        const tarjeta = [[${ empleado }]];
+        console.log(tarjeta);
+    </script>
+</body>
+
+</html>

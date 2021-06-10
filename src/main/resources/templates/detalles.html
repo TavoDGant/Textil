@@ -147,18 +147,12 @@
                                 <div class="form-group">
                                     <label class="small mb-1">Cortes</label>
                                     <input th:field="*{cortes}" class="form-control" type="number" required/>
-                                    <div class="alet alert-warning alert-dismissible fade show"
-                                        th:if="${#fields.hasErrors('cortes')}" th:errors="*{cortes}">
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="small mb-1">Fecha del Corte</label>
                                     <input th:field="*{fecha_corte}" class="form-control" type="date" required/>
-                                    <div class="alet alert-warning alert-dismissible fade show"
-                                        th:if="${#fields.hasErrors('fecha_corte')}" th:errors="*{fecha_corte}">
-                                    </div>
                                 </div>
                             </div>
                         </div>

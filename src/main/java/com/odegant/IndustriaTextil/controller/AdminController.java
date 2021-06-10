@@ -26,14 +26,6 @@ public class AdminController {
     public String admin(Model model){
         model.addAttribute("empleados",adminService.listaEmpleados());
         model.addAttribute("tarjetas", adminService.totalMesCards());
-        Empleado empleado = new Empleado();
-        model.addAttribute("actualizar", empleado);
-        return "admin";
-    }
-
-    @PostMapping("actualizar")
-    public String actualizarEmpleado(@RequestBody Empleado empleado){
-        adminService.actualizarEmpleado(empleado);
         return "admin";
     }
 
@@ -80,12 +72,29 @@ public class AdminController {
 
     //@ModelAttribute("empleado")
     @PostMapping("/agregar")
-    public String agregarEmpleado(@Valid Empleado empleado, BindingResult result){
-        if(result.hasErrors()){
+    public String agregarEmpleado(@Valid Empleado empleado, BindingResult result) {
+        if (result.hasErrors()) {
             return "nuevo-empleado";
-        }else{
-            adminService.guardarEmpleado(empleado);
-            return "redirect:/admin";
         }
+        adminService.guardarEmpleado(empleado);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/editar-empleado/{id}")
+    public String vistaEditarEmpleado(Model model, @PathVariable Integer id){
+        //ArrayList list = adminService.empleadoID(id);
+        Empleado empleado = new Empleado();
+        empleado.setId_empleado(id);
+        model.addAttribute("empleado", empleado);
+        return "editar-empleado";
+    }
+
+    @PostMapping("/editar-empleado/actualizar")
+    public String actualizarEmpleado(@Valid Empleado empleado, BindingResult result){
+        if(result.hasErrors()){
+            return "editar-empleado";
+        }
+        adminService.actualizarEmpleado(empleado);
+        return "redirect:/admin";
     }
 }
