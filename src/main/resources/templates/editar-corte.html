@@ -16,14 +16,12 @@
                     </button>
                     <!-- Page Heading -->
                     <div class="d-sm-flex">
-                        <h1 class="h3 mb-0 text-gray-800">Nuevo Empleado
+                        <h1 class="h3 mb-0 text-gray-800">Actualizar Cortes de: 
                         </h1>
                     </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item">
                             <a href="#" data-toggle="modal" data-target="#logoutModal">
@@ -34,8 +32,6 @@
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid ">
                     <div class="container card">
                         <!-- Empleado Nuevo -->
@@ -45,46 +41,39 @@
                                 <div class="col-lg-12">
                                     <div class="p-4">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Crear Empleado!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Actualizar Corte</h1>
                                         </div>
-                                        <form class="user" th:action="@{agregar}" th:object="${empleado}" method="POST">
+                                        <form class="user" 
+                                            method="POST">
                                             <div class="form-group row">
+                                                <div>
+                                                    <input  type="hidden"
+                                                        
+                                                        class="form-control form-control-user">
+                                                </div>
                                                 <div class="col-sm-12 p-2">
-                                                    <label class="small mb-1">Nombre</label>
-                                                    <input th:field="*{nombre}" type="text"
-                                                        class="form-control form-control-user" >
-                                                    <div class="alert alert-info" th:if="${#fields.hasErrors('nombre')}"
-                                                        th:errors="*{nombre}">
-                                                    </div>
+                                                    <label class="small mb-1">Corte</label>
+                                                    <input  type="text"
+                                                        class="form-control form-control-user">
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Apellido Paterno</label>
-                                                    <input th:field="*{ape_pat}" type="text"
+                                                    <input type="text"
                                                         class="form-control form-control-user">
-                                                    <div class="alert alert-info"
-                                                        th:if="${#fields.hasErrors('ape_pat')}" th:errors="*{ape_pat}">
-                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Apellido Materno</label>
-                                                    <input th:field="*{ape_mat}" type="text"
+                                                    <input type="text" 
                                                         class="form-control form-control-user">
-                                                    <div class="alert alert-info"
-                                                        th:if="${#fields.hasErrors('ape_mat')}" th:errors="*{ape_mat}">
-                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
                                                     <label class="small mb-1">Fecha de Nacimiento</label>
-                                                    <input th:field="*{nacimiento}" type="date"
+                                                    <input  type="date" 
                                                         class="form-control form-control-user">
-                                                    <div class="alert alert-info"
-                                                        th:if="${#fields.hasErrors('nacimiento')}"
-                                                        th:errors="*{nacimiento}">
-                                                    </div>
                                                 </div>
                                             </div>
                                             <input type="submit" class="btn btn-primary btn-user btn-block"
-                                                value="Registrar Empleado">
+                                                value="Actualizar Corte">
                                             </input>
                                         </form>
                                     </div>
@@ -94,7 +83,7 @@
                         <!-- Fin Empleado Nuevo -->
                     </div>
                 </div>
-                <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
@@ -102,21 +91,21 @@
             <!-- End of Footer -->
         </div>
     </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-arrow-up"></i>
-    </a>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-arrow-up"></i>
+        </a>
 
-    <!-- Logout Modal-->
-    <div th:replace="plantillas/plantilla::salir"></div>
-    <!-- Bootstrap core JavaScript-->
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <!-- Core plugin JavaScript-->
-    <script th:src="@{/js/jquery.easing.min.js}"></script>
-    <!-- Custom scripts for all pages-->
-    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+        <!-- Logout Modal-->
+        <div th:replace="plantillas/plantilla::salir"></div>
+        <!-- Bootstrap core JavaScript-->
+        <script th:src="@{/js/jquery.min.js}"></script>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+        <!-- Core plugin JavaScript-->
+        <script th:src="@{/js/jquery.easing.min.js}"></script>
+        <!-- Custom scripts for all pages-->
+        <script th:src="@{/js/sb-admin-2.min.js}"></script>
 </body>
 </html>

@@ -85,7 +85,7 @@ public class AdminController {
         ResponseEntity<ArrayList<Empleado>> list = adminService.empleadoID(id);
         Empleado empleado = new Empleado();
         empleado.setId_empleado(id);
-        empleado.setNombre(list.getBody().get(0).getNombre());
+        empleado.setNombre(Objects.requireNonNull(list.getBody()).get(0).getNombre());
         empleado.setApe_pat(list.getBody().get(0).getApe_pat());
         empleado.setApe_mat(list.getBody().get(0).getApe_mat());
         empleado.setNacimiento(list.getBody().get(0).getNacimiento());
@@ -100,5 +100,10 @@ public class AdminController {
         }
         adminService.actualizarEmpleado(empleado);
         return "redirect:/admin";
+    }
+
+    @GetMapping("/editar-corte/{fkec}")
+    public String vistaEditarCorte(Model model, @PathVariable Integer fkec){
+        return "editar-corte";
     }
 }

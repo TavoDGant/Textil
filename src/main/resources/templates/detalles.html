@@ -71,7 +71,7 @@
                                                 <th class="th-sm">Cortes Totales</th>
                                                 <th class="th-sm">Fecha del Corte</th>
                                                 <th class="th-sm">Sueldo</th>
-                                                <th class="th-sm">Eliminar</th>
+                                                <th class="th-sm">Operaciones</th>
                                             </tr>
                                         </thead>
                                         <tbody th:each="empleado : ${detalleEmpleado.body}">
@@ -81,10 +81,11 @@
                                                 </th>
                                                 <th th:text="'$ '+${corte.sueldo}"></th>
                                                 <td>
-                                                    <a
-                                                        th:href="@{/admin/detalles/eliminar/} + ${corte.id_cortes} + '/' + ${corte.fkec}">
-                                                        <i class="text-danger fa fa-trash">
-                                                        </i>
+                                                    <a class="mr-3" th:href="@{/admin/editar-corte/} + ${corte.id_cortes}" data-placement="auto" title="Editar">
+                                                        <i class="text-success fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a class="mr-3" th:href="@{/admin/detalles/eliminar/} + ${corte.id_cortes} + '/' + ${corte.fkec}" data-placement="auto" title="Eliminar">
+                                                        <i class="text-danger fa fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
