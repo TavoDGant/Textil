@@ -43,32 +43,40 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Actualizar Corte</h1>
                                         </div>
-                                        <form class="user" 
-                                            method="POST">
+                                        <form class="user" th:action="@{actualizar}" th:object="${cortes}" method="POST">
                                             <div class="form-group row">
                                                 <div>
-                                                    <input  type="hidden"
-                                                        
+                                                    <input th:field="*{id_cortes}"
+                                                    th:value="${id_cortes}" type="hidden"
                                                         class="form-control form-control-user">
                                                 </div>
                                                 <div class="col-sm-12 p-2">
-                                                    <label class="small mb-1">Corte</label>
-                                                    <input  type="text"
+                                                    <label class="small mb-1">Cortes</label>
+                                                    <input th:field="*{cortes}"
+                                                    th:value="${cortes}" type="text"
                                                         class="form-control form-control-user">
+                                                    <div class="alert alert-info" th:if="${#fields.hasErrors('cortes')}"
+                                                        th:errors="*{cortes}">
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
-                                                    <label class="small mb-1">Apellido Paterno</label>
-                                                    <input type="text"
+                                                    <label class="small mb-1">Fecha de los Cortes</label>
+                                                    <input th:field="*{fecha_corte}"
+                                                    th:value="${fecha_corte}" type="date" 
                                                         class="form-control form-control-user">
+                                                    <div class="alert alert-info" th:if="${#fields.hasErrors('fecha_corte')}"
+                                                        th:errors="*{fecha_corte}">
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 p-2">
-                                                    <label class="small mb-1">Apellido Materno</label>
-                                                    <input type="text" 
-                                                        class="form-control form-control-user">
+                                                    <label class="small mb-1">Sueldo</label>
+                                                    <input th:field="*{sueldo}"
+                                                    th:value="${sueldo}" type="number" 
+                                                        class="form-control form-control-user" disabled>
                                                 </div>
-                                                <div class="col-sm-12 p-2">
-                                                    <label class="small mb-1">Fecha de Nacimiento</label>
-                                                    <input  type="date" 
+                                                <div>
+                                                    <input th:field="*{fkec}"
+                                                    th:value="${fkec}" type="hidden"
                                                         class="form-control form-control-user">
                                                 </div>
                                             </div>
@@ -107,5 +115,9 @@
         <script th:src="@{/js/jquery.easing.min.js}"></script>
         <!-- Custom scripts for all pages-->
         <script th:src="@{/js/sb-admin-2.min.js}"></script>
+        <script th:inline="javascript">
+            const tarjeta = [[${ cortes }]];
+            console.log(tarjeta);
+        </script>
 </body>
 </html>

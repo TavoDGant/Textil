@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("v1/api/admin/empleado")
@@ -51,9 +52,12 @@ public class ApiController {
 
     //-----------------------------CORTES--------------------------------------------------------
     @GetMapping("corte/{fkec}")
-    public ResponseEntity<List<Cortes>> corteID(@PathVariable Integer fkec){
-        return adminService.cortesID(fkec);
+    public ResponseEntity<List<Cortes>> corteFkec(@PathVariable Integer fkec){
+        return adminService.cortesFkec(fkec);
     }
+
+    @GetMapping("corte/id/{id}")
+    public Optional<Cortes> corteID(@PathVariable Integer id) {return adminService.cortesID(id);}
 
     @PostMapping("corte/nuevo")
     public ResponseEntity<HttpStatus> guardarCorte(@RequestBody Cortes cortes){

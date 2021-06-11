@@ -13,7 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("admin")
@@ -102,8 +104,25 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/editar-corte/{fkec}")
-    public String vistaEditarCorte(Model model, @PathVariable Integer fkec){
+    @GetMapping("/editar-corte/{id}")
+    public String vistaEditarCorte(Model model, @PathVariable Integer id){
+        Optional<Cortes> cortesList = adminService.cortesID(id);
+        Cortes cortes = new Cortes();
+        cortes.setId_cortes(id);
+        cortes.setCortes(cortesList.get().getCortes());
+        cortes.setFecha_corte(cortesList.get().getFecha_corte());
+        cortes.setSueldo(cortesList.get().getSueldo());
+        cortes.setFkec(cortesList.get().getFkec());
+        model.addAttribute("cortes", cortes);
         return "editar-corte";
+    }
+
+    @PostMapping("/editar-corte/actualizar")
+    public String actualizarCorte(@Valid Cortes cortes, BindingResult result){
+        if(result.hasErrors()){
+            return "editar-corte";
+        }
+        adminService.actualizarCorte(cortes);
+        return "redirect:/admin/detalles/"+cortes.getFkec();
     }
 }

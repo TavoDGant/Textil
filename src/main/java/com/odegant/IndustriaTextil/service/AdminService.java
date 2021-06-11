@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface AdminService {
 
@@ -30,7 +31,9 @@ public interface AdminService {
 
     ResponseEntity<HttpStatus> actualizarCorte(Cortes cortes);
 
-    ResponseEntity<List<Cortes>> cortesID(Integer fkec);
+    ResponseEntity<List<Cortes>> cortesFkec(Integer fkec);
+
+    Optional<Cortes> cortesID(Integer id);
 
     ResponseEntity<HttpStatus> eliminarCorte(Integer id);
 }
