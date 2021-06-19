@@ -3,11 +3,17 @@ package com.odegant.IndustriaTextil.controller;
 import com.odegant.IndustriaTextil.entity.Cortes;
 import com.odegant.IndustriaTextil.entity.Empleado;
 import com.odegant.IndustriaTextil.service.AdminService;
+import com.odegant.IndustriaTextil.service.ReporteService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +25,9 @@ public class ApiController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ReporteService reporteService;
 
     @GetMapping("")
     public ResponseEntity<List<Empleado>> empleados(){
@@ -72,5 +81,14 @@ public class ApiController {
     @PutMapping("corte/actualizar")
     public ResponseEntity<HttpStatus> actualizarCorte(@RequestBody Cortes cortes){
         return adminService.actualizarCorte(cortes);
+    }
+
+    //---------------------REPORTES----------------------------------//
+    @GetMapping("reporte/{id}")
+    public void reporte(HttpServletResponse response,@PathVariable Integer id) throws IOException, JRException {
+        response.setContentType("application/x-download");
+        response.setHeader("Content-Disposition", "attachment; filename=\"empleado "+ id +".pdf\"");
+        OutputStream out = response.getOutputStream();
+        reporteService.reportes(id, out);
     }
 }

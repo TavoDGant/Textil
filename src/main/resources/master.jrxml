@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="master" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9190383a-30c9-4436-88c5-c2521ad9e397">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+    <subDataset name="Dataset1" uuid="61b6eccd-547c-499a-b0ba-06434b1c3446">
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+        <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+        <field name="id_cortes" class="java.lang.Integer">
+        </field>
+        <field name="cortes" class="java.lang.Integer">
+        </field>
+        <field name="fecha_corte" class="java.util.Calendar">
+        </field>
+        <field name="fkec" class="java.lang.Integer">
+        </field>
+        <field name="sueldo" class="java.lang.Double">
+        </field>
+    </subDataset>
+    <parameter name="fkec" class="java.lang.Integer"/>
+    <field name="id_empleado" class="java.lang.Integer">
+    </field>
+    <field name="ape_mat" class="java.lang.String">
+    </field>
+    <field name="ape_pat" class="java.lang.String">
+    </field>
+    <field name="nacimiento" class="java.util.Calendar">
+    </field>
+    <field name="nombre" class="java.lang.String">
+    </field>
+    <field name="registro" class="java.util.Calendar">
+    </field>
+    <title>
+        <band height="79" splitType="Stretch">
+            <staticText>
+                <reportElement x="242" y="27" width="100" height="30" uuid="55465d25-3b6e-40c3-a65b-c52a42f1a9d6"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Serif" size="18"/>
+                </textElement>
+                <text><![CDATA[Reporte]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="47" splitType="Stretch">
+            <textField>
+                <reportElement x="34" y="11" width="100" height="30" uuid="22e9d1fd-bb64-4f2b-9cd4-d06435006144"/>
+                <textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="10" width="100" height="30" uuid="88eaac8d-5f66-4580-846c-c368a3c25b17"/>
+                <textFieldExpression><![CDATA[$F{ape_pat}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="310" y="10" width="100" height="30" uuid="936983bc-1e4b-4e43-be4c-3e661c0a6a79"/>
+                <textFieldExpression><![CDATA[$F{ape_mat}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="445" y="12" width="100" height="30" uuid="9784219d-387e-4922-9cd2-592cbc5eb6e1"/>
+                <textFieldExpression><![CDATA[$F{registro}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <detail>
+        <band height="34" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="550" height="30" uuid="c6e9a1b3-aadc-4286-b88c-3bc144a7644c"/>
+                <subreportParameter name="fkec">
+                    <subreportParameterExpression><![CDATA[$P{fkec}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA["subReporte.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+</jasperReport>
